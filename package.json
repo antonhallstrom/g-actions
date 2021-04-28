@@ -4,9 +4,13 @@
   "description": "Blerg",
   "main": "index.js",
   "dependencies": {
+    "@semantic-release/npm": "^7.1.1",
     "semantic-release": "^17.4.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +23,14 @@
   "bugs": {
     "url": "https://github.com/antonhallstrom/g-actions/issues"
   },
-  "homepage": "https://github.com/antonhallstrom/g-actions#readme"
+  "homepage": "https://github.com/antonhallstrom/g-actions#readme",
+  "private": true,
+  "plugins": [
+    "@semantic-release/npm"
+  ],
+  "release": {
+    "prepare": [
+      "@semantic-release/npm"
+    ]
+  }
 }
