@@ -19,9 +19,8 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           author_name: GitHub Actions Bot
-          author_email: <>
           message: "chore: update date"
-          add: "time.txt"
+          add: "*.txt"
   release:
     name: Release
     runs-on: ubuntu-latest
