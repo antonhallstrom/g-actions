@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/github": "^7.2.1",
     "@semantic-release/npm": "^7.1.1",
     "semantic-release": "^17.4.2"
   },
@@ -25,13 +26,5 @@
     "url": "https://github.com/antonhallstrom/g-actions/issues"
   },
   "homepage": "https://github.com/antonhallstrom/g-actions#readme",
-  "private": true,
-  "plugins": [
-    "@semantic-release/npm"
-  ],
-  "release": {
-    "prepare": [
-      "@semantic-release/npm"
-    ]
-  }
+  "private": true
 }

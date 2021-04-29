@@ -1,3 +1,4 @@
+# Sources: https://dev.to/amalv/how-to-setup-semantic-release-for-a-react-app-or-a-next-js-app-25c1
 # TODO: Seperate job for https://github.com/marketplace/actions/commit-linter
 # TODO: https://github.com/semantic-release/commit-analyzer
 name: Main
@@ -35,7 +36,7 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           author_name: GitHub Actions Bot
-          message: "chore: build dist"
+          message: "chore(release): build dist"
           add: "*.txt"
 
       - name: Release
