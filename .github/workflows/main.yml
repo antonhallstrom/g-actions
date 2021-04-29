@@ -19,10 +19,12 @@ jobs:
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v3
-  build:
-    name: Build
+
+  release:
+    name: Release
     runs-on: ubuntu-latest
     needs: commitlint
+    steps:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,7 +34,7 @@ jobs:
         with:
           node-version: 12
 
-      - name: Save current date
+      - name: Build dist
         run: |
           date > time.txt
 
@@ -42,27 +44,6 @@ jobs:
           author_name: GitHub Actions Bot
           message: "chore(release): build dist"
           add: "*.txt"
-
-      - name: Get SHA
-        id: sha
-        run: |
-          build_sha=$(git rev-parse HEAD)
-          echo $build_sha
-          echo "::set-output name=SHA::$build_sha"
-      - run: echo ${{ steps.sha.outputs.SHA }}
-
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ needs.build.outputs.build_sha }}
-          fetch-depth: 0
-
-      - run: git log -5
 
       - name: Release
         env:
