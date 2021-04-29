@@ -1,6 +1,9 @@
 # Sources: https://dev.to/amalv/how-to-setup-semantic-release-for-a-react-app-or-a-next-js-app-25c1
 # TODO: Seperate job for https://github.com/marketplace/actions/commit-linter
 # TODO: https://github.com/semantic-release/commit-analyzer
+# Revert releases
+# git revert HEAD~1 HEAD
+# Revert "feat: allow bacon in g-actions" => revert: "feat: allow bacon in g-actions"
 name: Main
 on:
   push:
