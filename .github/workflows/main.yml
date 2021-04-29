@@ -4,6 +4,7 @@
 # Revert releases
 # git revert HEAD~1 HEAD
 # Revert "feat: allow bacon in g-actions" => revert: "feat: allow bacon in g-actions"
+# https://github.community/t/checkout-commit-pushed-by-previous-job/18246
 name: Main
 on:
   push:
@@ -61,7 +62,14 @@ jobs:
           ref: ${{ needs.build.outputs.build_sha }}
           fetch-depth: 0
 
+      - run: git log -5
+
       - name: Release
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ needs.build.outputs.build_sha }}
+          fetch-depth: 0
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
