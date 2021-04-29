@@ -33,6 +33,9 @@ jobs:
         with:
           node-version: 12
 
+      - name: Fail this step
+        run: exit 1
+
       - name: Build dist
         run: |
           date > time.txt
