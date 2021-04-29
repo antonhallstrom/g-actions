@@ -41,6 +41,15 @@ jobs:
           author_name: GitHub Actions Bot
           message: "chore(release): build dist"
           add: "*.txt"
+
+      - name: Get SHA
+        id: sha
+        run: |
+          build_sha=$(git rev-parse HEAD)
+          echo $build_sha
+          echo "::set-output name=SHA::$build_sha"
+      - run: echo ${{ steps.sha.outputs.SHA }}
+
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -48,6 +57,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ needs.build.outputs.build_sha }}
+          fetch-depth: 0
 
       - name: Release
         env:
